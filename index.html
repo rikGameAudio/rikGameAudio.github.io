@@ -6,125 +6,39 @@
     <title> Rik | Sound Designer for Videogames</title>
     <style>
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #e0e0e0; background: #121212; margin: 0; padding: 0; }
-        header { padding: 80px 20px; text-align: center; background: linear-gradient(145deg, #1f1f1f, #121212); }
-        h1 { margin: 0; font-size: 2.5em; color: #ff4500; }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
         
-        /* Menu di Navigazione */
-        nav { text-align: center; margin-top: 20px; }
-        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        nav a:hover { color: #ff4500; }
+        /* Navbar posizionata in alto a destra */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; /* Spinge tutto a destra */
+            padding: 20px;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+        }
 
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 30px;
+            font-weight: bold;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover { color: #ff4500; }
+
+        header { padding: 120px 20px 60px; text-align: center; background: linear-gradient(145deg, #1f1f1f, #121212); }
+        h1 { margin: 0; font-size: 2.5em; color: #ff4500; }
+        
+        .container { max-width: 900px; margin: auto; padding: 20px; }
         .project { background: #1e1e1e; border-radius: 8px; padding: 25px; margin-bottom: 40px; border-left: 4px solid #ff4500; }
         .project h2 { margin-top: 0; color: #fff; }
         .tags { color: #ff4500; font-size: 0.9em; font-weight: bold; margin-bottom: 15px; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0; border-radius: 4px; background: #000; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        
-        .links { margin-top: 20px; text-align: center; }
-        .btn { display: inline-block; padding: 10px 20px; background: #ff4500; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; margin: 5px; }
-        .btn:hover { background: #fff; }
-        footer { text-align: center; padding: 40px; font-size: 0.8em; opacity: 0.6; }
-
-        /* Stili per le pagine a comparsa (Modal) */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.9); 
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: #1e1e1e;
-            margin: 10% auto;
-            padding: 30px;
-            border: 1px solid #ff4500;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            position: relative;
-        }
-        .close {
-            color: #fff;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover { color: #ff4500; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>RIK</h1>
-    <p>Sound Design & Technical Sound Design</p>
-    <p>Wwise | FMOD | Unity | Unreal Engine</p>
-    
-    <nav>
-        <a onclick="openModal('aboutModal')">ABOUT</a>
-        <a onclick="openModal('projectsModal')">PROJECTS</a>
-    </nav>
-</header>
-
-<div class="container">
-    <div class="project">
-        <div class="tags">FEATURED PROJECT</div>
-        <h2>Lyra Wwise + Unreal engine 5.5</h2>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/ID_VIDEO" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <div class="links">
-        <h3>Contattami</h3>
-        <p>Email: <a href="mailto:tua@email.com" style="color: #ff4500;">tua@email.com</a></p>
-        <a href="https://linkedin.com/in/tuoprofilo" class="btn">LinkedIn</a>
-        <a href="https://github.com/tuoprofilo" class="btn">GitHub</a>
-    </div>
-</div>
-
-<div id="aboutModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('aboutModal')">&times;</span>
-        <h2 style="color: #ff4500;">About Me</h2>
-        <p>Sono un Sound Designer appassionato di implementazione tecnica. Mi occupo di creare mondi sonori immersivi utilizzando i principali middleware del settore.</p>
-        <p>Esperienza in sintesi procedurale, field recording e spazializzazione audio per VR/AR.</p>
-    </div>
-</div>
-
-<div id="projectsModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('projectsModal')">&times;</span>
-        <h2 style="color: #ff4500;">All Projects</h2>
-        <ul>
-            <li><strong>Project Alpha:</strong> Redesign audio per shooter sci-fi.</li>
-            <li><strong>Ambient Nature:</strong> Sistema di suoni ambientali dinamici in FMOD.</li>
-            <li><strong>UI Sounds:</strong> Pack di suoni per interfacce futuristiche.</li>
-        </ul>
-        <p><i>Lavori in corso per nuovi update...</i></p>
-    </div>
-</div>
-
-<footer>
-    &copy; 2026 Rik - Built with Github pages
-</footer>
-
-<script>
-    function openModal(id) {
-        document.getElementById(id).style.display = "block";
-    }
-    function closeModal(id) {
-        document.getElementById(id).style.display = "none";
-    }
-    // Chiude se clicchi fuori dal rettangolo grigio
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            event.target.style.display = "none";
-        }
-    }
-</script>
-
-</body>
-</html>
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0; border-radius: 4px; background: #0
